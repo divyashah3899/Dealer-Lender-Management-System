@@ -1,0 +1,221 @@
+﻿@model DLMS.Models.LoanRequest
+
+@{
+    ViewBag.Title = "Full Details";
+}
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bcolor{
+    color:white;
+}
+.links{
+    font-size:20px;
+}
+</style>
+
+
+
+<div>
+    <div class="row">
+        <div class="image" style="float: left;margin-left: 15%;margin-top: 5%;">
+            <span style="text-transform: uppercase;font-size: 60Px;">Details</span>
+
+            <ul class="list-group" style="margin-top: 31px;">
+                <li class="list-group-item"> User Name : @Html.DisplayFor(model => model.User.firstname)</li>
+                <li class="list-group-item"> User Address : @Html.DisplayFor(model => model.user_address)</li>
+                <li class="list-group-item"> Company Name : @Html.DisplayFor(model => model.Dealer.company_name) </li>
+                <li class="list-group-item"> Car Manufacturer : @Html.DisplayFor(model => model.Car.car_manufacturer)</li>
+            </ul>
+
+        </div>
+
+        <div class="details" style="float: right;margin-left: 11%;margin-top: 4%; ">
+            <span style="text-transform: uppercase;font-size: 60Px;">Lender Details</span>
+
+            <ul class="list-group" style="margin-top: 31px;">
+                <li class="list-group-item">Lender Name : @Html.DisplayFor(model => model.Lender.bankname)</li>
+                <li class="list-group-item">Downpayment :@Html.DisplayFor(model => model.downpayment)  </li>
+                <li class="list-group-item">Loan Time : @Html.DisplayFor(model => model.loan_period) </li>
+                <li class="list-group-item"> EMI : @Html.DisplayFor(model => model.emi)</li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 50px;">
+    <div class="plocation" style="float: left;margin-left: 15%;margin-top: 3%;">
+        <span style="text-transform: uppercase;font-size: 54Px;">Nominal Details</span>
+        <ul class="list-group" style="margin-top: 31px;">
+            <li class="list-group-item">Nominal Name : @Html.DisplayFor(model => model.gnn)</li>
+            <li class="list-group-item">Nominal Address : @Html.DisplayFor(model => model.gnn_address)</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 50px;">
+    <div class="plocation" style="float: left;margin-left: 15%;margin-top: 3%;">
+        <img id="myImg" src="@Url.Content(Model.id_proof)" alt="Id Proof" style="width:200px;height:200px ;max-width:300px">&nbsp;&nbsp;&nbsp;&nbsp;
+        <img id="myImg1" src="@Url.Content(Model.income_certificate)" alt="Income Certificate" style="width:200px;height:200px ;max-width:300px">&nbsp;&nbsp;&nbsp;&nbsp;
+        <img id="myImg2" src="@Url.Content(Model.income_tax_return)" alt="Income Tax Return" style="width:200px;height:200px ;max-width:300px">&nbsp;&nbsp;&nbsp;&nbsp;
+        <img id="myImg3" src="@Url.Content(Model.address_proof)" alt="Address Proof" style="width:200px;height:200px ;max-width:300px">&nbsp;&nbsp;&nbsp;&nbsp;
+        <img id="myImg4" src="@Url.Content(Model.gnn_address_p)" alt="Nominal Address Proof" style="width:200px;height:200px ;max-width:300px">
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <span class="close" style="margin-top:50px">&times;</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
+        </div>
+        <script>
+            // Get the modal
+            var modal = document.getElementById("myModal");
+
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            var img = document.getElementById("myImg");
+            var img1 = document.getElementById("myImg1");
+            var img2 = document.getElementById("myImg2");
+            var img3 = document.getElementById("myImg3");
+            var img4 = document.getElementById("myImg4");
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+            img1.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+            img2.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+            img3.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+            img4.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+        </script>
+
+    </div>
+</div>
+<p>
+    @if (Session["usertype"].ToString() == "lender")
+    {
+        if (@ViewBag.print == "none")
+        {
+            <div class="btn btn-primary" style="margin-left:44%"> @Html.ActionLink("Approve", "Approve", "LoanRequests", new { id = Model.loan_id }, new { @class = "bcolor" })</div>
+            <div class="btn btn-danger"> @Html.ActionLink("Reject", "Reject", "LoanRequests", new { id = Model.loan_id }, new { @class = "bcolor" })</div>
+        }
+        else if (@ViewBag.print == "Approved")
+        {
+            <div style="color:forestgreen;font-size:30px;margin-left:47% "> @ViewBag.print </div>
+        }
+        else
+        {
+            <div style="color:red;font-size:30px;margin-left:47% "> @ViewBag.print </div>
+        }
+    }
+    else if (Session["usertype"].ToString() == "user" || Session["usertype"].ToString() == "dealer")
+    {
+        if (@ViewBag.print == "none")
+        {
+            <h3 style="color: darkgoldenrod;margin-left: 41%;">Waiting For Approval</h3>
+        }
+        else if (ViewBag.print == "Approved")
+        {
+            <h3 style="color:forestgreen;font-size:30px;margin-left:44% ">Approved &nbsp;&nbsp; @Html.ActionLink("Invoice", "Pdf", "LoanRequests", new { id = Model.loan_id }, new { @class ="links"})</h3>
+        }
+        else if (ViewBag.print == "Rejected")
+        {
+            <h3 style="color:red;font-size:30px;margin-left:47% ">Rejected</h3>
+        }
+    }
+</p>

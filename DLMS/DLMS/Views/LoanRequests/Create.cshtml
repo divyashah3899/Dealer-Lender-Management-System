@@ -1,0 +1,93 @@
+﻿@model DLMS.Models.LoanRequest
+
+@{
+    ViewBag.Title = "LoanRequest Form";
+}
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+
+            @using (Html.BeginForm("Create", "LoanRequests", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <span class="login100-form-title p-b-26">
+                    Loan Request
+                </span>
+                <span class="login100-form-title p-b-48">
+                    <i class="zmdi zmdi-font"></i>
+                </span>
+
+                <div class="wrap-input100 validate-input">
+                    @Html.DropDownList("lender_id", null, htmlAttributes: new { @class = "input100" })
+                    @Html.ValidationMessageFor(model => model.lender_id, "", new { @class = "text-danger" })
+                </div>
+                <div class="wrap-input100 validate-input">
+                    @Html.TextBoxFor(model => model.downpayment, new { placeholder = "Enter Downpayment", htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.downpayment, "", new { @class = "text-danger" })
+                </div>
+                <div class="wrap-input100 validate-input">
+                    @Html.TextBoxFor(model => model.loan_period, new { placeholder = "Enter Loan Period", htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.loan_period, "", new { @class = "text-danger" })
+                </div>
+                <div class="wrap-input100 validate-input">
+                    @Html.TextBoxFor(model => model.emi, new { placeholder = "Enter EMI",htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.emi, "", new { @class = "text-danger" })
+                </div>
+                <div class="wrap-input100 validate-input">
+                    @Html.TextBoxFor(model => model.user_address, new { placeholder = "Enter Your Address",htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.user_address, "", new { @class = "text-danger" })
+                </div>
+                <div class="wrap-input100 validate-input">
+                    @Html.TextBoxFor(model => model.gnn, new { placeholder = "Enter Nominal Name",htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.gnn, "", new { @class = "text-danger" })
+                </div>
+                <div class="wrap-input100 validate-input">
+                    @Html.TextBoxFor(model => model.gnn_address, new {placeholder = "Enter Nominal Address", htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.gnn_address, "", new { @class = "text-danger" })
+                </div>
+                <div class="validate-input">
+                    ID Proof:
+                    @Html.TextBoxFor(model => model.id_proof_file, new { type = "file", required = "required", htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.id_proof_file, "", new { @class = "text-danger" })
+                </div><br />
+                <div class=" validate-input">
+                    Income Certificate:
+                    @Html.TextBoxFor(model => model.income_certificate_file, new { type = "file", required = "required", htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.income_certificate_file, "", new { @class = "text-danger" })
+                </div><br />
+                <div class=" validate-input">
+                    Income Tax Return
+                    @Html.TextBoxFor(model => model.income_tax_return_file, new { type = "file", required = "required", htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.income_tax_return_file, "", new { @class = "text-danger" })
+                    </div><br />
+                    <div class=" validate-input">
+                        Address Proof:
+                        @Html.TextBoxFor(model => model.address_proof_file, new { type = "file", required = "required", htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.address_proof_file, "", new { @class = "text-danger" })
+                        </div><br />
+                        <div class=" validate-input">
+                            Nominal Address Proof: 
+                            @Html.TextBoxFor(model => model.gnn_address_file, new { type = "file", required = "required", htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.gnn_address_file, "", new { @class = "text-danger" })
+                            </div><br />
+                            <div class="container-login100-form-btn">
+                                <div class="wrap-login100-form-btn">
+                                    <div class="login100-form-bgbtn"></div>
+                                    <button class="login100-form-btn">
+                                        Submit
+                                    </button>
+
+                                </div>
+                            </div>
+                            }
+
+                        </div>
+                    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

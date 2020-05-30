@@ -1,0 +1,54 @@
+﻿@model IEnumerable<DLMS.Models.Dealer>
+
+@{
+    ViewBag.Title = "Dealers";
+}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.company_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.d_address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.contact_no)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+@foreach (var item in Model) {
+<tbody>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.company_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.d_address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contact_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+            <div class='fa fa-trash' style='font-size:20px;color:red'>@Html.ActionLink("Delete", "Delete", new { id = item.d_id })</div>
+</td>
+    </tr>
+    </tbody>
+    }
+
+</table>

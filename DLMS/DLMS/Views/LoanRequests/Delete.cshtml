@@ -1,0 +1,144 @@
+﻿@model DLMS.Models.LoanRequest
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>LoanRequest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.car_manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.car_manufacturer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dealer.company_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dealer.company_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lender.bankname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lender.bankname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.downpayment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.downpayment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loan_period)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loan_period)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_proof)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_proof)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.income_certificate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.income_certificate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.income_tax_return)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.income_tax_return)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address_proof)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address_proof)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gnn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gnn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gnn_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gnn_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gnn_address_p)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gnn_address_p)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

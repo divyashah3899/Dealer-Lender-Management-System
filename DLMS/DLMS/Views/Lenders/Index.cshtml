@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DLMS.Models.Lender>
+
+@{
+    ViewBag.Title = "Lenders";
+}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.bankname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.branchname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ifsc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.b_email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.contact_no)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.password)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.bankname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.branchname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ifsc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.b_email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.contact_no)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.password)
+                    </td>
+                    <td>
+                        <div class='fa fa-trash' style='font-size:20px;color:red'>@Html.ActionLink("Delete", "Delete", new { id = item.lender_id })</div>
+                    </td>
+                </tr>
+                </tbody>
+                }
+
+        </table>

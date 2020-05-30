@@ -1,0 +1,81 @@
+﻿@model IEnumerable<DLMS.Models.LoanRequest>
+
+@{
+    ViewBag.Title = "Loan Requests";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.car_manufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dealer.company_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lender.bankname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.downpayment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.loan_period)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gnn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gnn_address)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Car.car_manufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dealer.company_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lender.bankname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.downpayment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.loan_period)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gnn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gnn_address)
+        </td>
+        <td>
+            @Html.ActionLink("Full Details", "Details", new { id=item.loan_id })
+        </td>
+    </tr>
+}
+
+</table>

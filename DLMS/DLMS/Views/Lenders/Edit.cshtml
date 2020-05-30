@@ -1,0 +1,69 @@
+﻿@model DLMS.Models.Lender
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.lender_id)
+                <span class="login100-form-title p-b-26">
+                    Edit Lender
+                </span>
+                <span class="login100-form-title p-b-48">
+                    <i class="zmdi zmdi-font"></i>
+                </span>
+
+
+                <div class="wrap-input100 validate-input">
+                    @Html.EditorFor(model => model.bankname, new { htmlAttributes = new { @class = "input100" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.bankname, "", new { @class = "text-danger" })
+                <div class="wrap-input100 validate-input">
+                    @Html.EditorFor(model => model.branchname, new { htmlAttributes = new { @class = "input100" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.branchname, "", new { @class = "text-danger" })
+                <div class="wrap-input100 validate-input">
+                    @Html.EditorFor(model => model.ifsc, new { htmlAttributes = new { @class = "input100" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.ifsc, "", new { @class = "text-danger" })
+                <div class="wrap-input100 validate-input">
+                    @Html.EditorFor(model => model.b_email, new { htmlAttributes = new { @class = "input100" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.b_email, "", new { @class = "text-danger" })
+                <div class="wrap-input100 validate-input">
+                    @Html.EditorFor(model => model.contact_no, new { htmlAttributes = new { @class = "input100" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.contact_no, "", new { @class = "text-danger" })
+                <div class="wrap-input100 validate-input">
+                    @Html.TextBoxFor(model => model.password, new {placeholder="Enter Password", htmlAttributes = new { @class = "input100" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn">
+                                Edit
+                            </button>
+
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

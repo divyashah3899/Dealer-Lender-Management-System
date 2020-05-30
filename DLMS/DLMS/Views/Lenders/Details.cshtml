@@ -1,0 +1,66 @@
+﻿@model DLMS.Models.Lender
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lender</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bankname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bankname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.branchname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.branchname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ifsc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ifsc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.b_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.b_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contact_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contact_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.lender_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

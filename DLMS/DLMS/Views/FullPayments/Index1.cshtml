@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DLMS.Models.FullPayment>
+
+@{
+    ViewBag.Title = "Full Payments";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.car_manufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dealer.company_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.downpayment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mode)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.car_manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dealer.company_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.downpayment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mode)
+            </td>
+            <td>
+                @Html.ActionLink("Invoice", "CreatePdf", new { id = item.fp_id })
+            </td>
+        </tr>
+    }
+
+</table>

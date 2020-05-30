@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLMS", "DLMS\DLMS.csproj", "{0DF67D66-FC5B-4FD9-8A65-8FF715696F5E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DF67D66-FC5B-4FD9-8A65-8FF715696F5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DF67D66-FC5B-4FD9-8A65-8FF715696F5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DF67D66-FC5B-4FD9-8A65-8FF715696F5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DF67D66-FC5B-4FD9-8A65-8FF715696F5E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF99A263-7610-4E2C-B8EE-0FDBF87DC703}
+	EndGlobalSection
+EndGlobal

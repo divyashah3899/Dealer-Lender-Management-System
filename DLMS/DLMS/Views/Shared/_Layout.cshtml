@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="@Url.Content("~/Content/css/main.css")" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.Content("~/Content/css/util.css")" rel="stylesheet" type="text/css" />
+    @Scripts.Render("~/Contents/sjs/ll.js")
+    <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap.min.css") ">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Footwear Commerce Card UI Experiment - Derek Shirk CodePen">
+    <meta name="twitter:description" content="An experiment with a footwear focused e-commerce card layout and UI.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/derekshirk/codepen-template-assets/master/img/shoes/twitter-large-card.png">
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.css'>
+    <link rel='stylesheet prefetch' href='https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css'>
+    <style>
+        .font{
+            font-size:18px;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+        <a class="navbar-brand" style="margin-left:50px; text-decoration: none;color:white;">DLMS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto" style="margin-left: 65%;">
+                @if (Session["usertype"] == null)
+                {
+
+                    <li class="nav-item">
+                        <div class="nav-link">@Html.ActionLink("Home", "Index", "Home",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link">@Html.ActionLink("Cars", "Index", "Cars",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="color: white;margin-top:3px;">
+                                <span class="fa fa-user-circle-o">Login</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item">@Html.ActionLink("User", "Login", "Users")</div>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-item">@Html.ActionLink("Dealer", "Login", "Dealers")</div>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-item">@Html.ActionLink("Lender", "Login", "Lenders")</div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                }
+                else if (Session["usertype"].ToString() == "user")
+                {
+                    <li class="nav-item">
+                        <div class="nav-link">@Html.ActionLink("Home", "Index", "Home",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link">@Html.ActionLink("Cars", "Index", "Cars",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link">@Html.ActionLink("Loan Requests", "Index", "LoanRequests",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link">@Html.ActionLink("Full Payment", "Index", "FullPayments",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="margin-top: 3px;color: white;">
+                                <span style="text-transform: uppercase;" class="fa fa-user-circle-o">&nbsp;&nbsp;@Session["username"].ToString()</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item">@Html.ActionLink("Edit Profile", "Edit", "Users", new { id = Convert.ToInt32(@Session["u_id"]) }, null)</div>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-item">@Html.ActionLink("Logout", "Logout", "Users")</div>
+                            </div>
+                        </div>
+                    </li>
+                }
+                else if (Session["usertype"].ToString() == "dealer")
+                {
+                    <li class="nav-item">
+                        <div class="nav-link">@Html.ActionLink("Home", "Index", "Home",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link">@Html.ActionLink("Add Cars", "Create", "Cars",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link">@Html.ActionLink("Full Payment", "Index1", "FullPayments",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link">@Html.ActionLink("Loan Requests", "Index2", "LoanRequests",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="margin-top: 3px;color: white;">
+                                <span style="text-transform: uppercase;" class="fa fa-user-circle-o">&nbsp;&nbsp;@Session["dealername"].ToString()</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item">@Html.ActionLink("Edit Profile", "Edit", "Dealers", new { id = Convert.ToInt32(@Session["d_id"]) }, null)</div>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-item">@Html.ActionLink("Logout", "Logout", "Users")</div>
+                            </div>
+                        </div>
+                    </li>
+                }
+                else if (Session["usertype"].ToString() == "lender")
+                {
+                    <li class="nav-item">
+                        <div class="nav-link">@Html.ActionLink("Home", "Index", "Home",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link">@Html.ActionLink("Loan Requests", "Index1", "LoanRequests",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="margin-top: 3px;color: white;">
+                                <span style="text-transform: uppercase;" class="fa fa-user-circle-o">&nbsp;&nbsp;@Session["lendername"].ToString()</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item">@Html.ActionLink("Logout", "Logout", "Users")</div>
+                            </div>
+                        </div>
+                    </li>
+                }
+                else if (Session["usertype"].ToString() == "admin")
+                {
+                    <li class="nav-item">
+                        <div class="nav-link">@Html.ActionLink("Home", "Index", "Home",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link" style="color:white;">@Html.ActionLink("User", "Index", "Users",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link" style="color:white;">@Html.ActionLink("Dealer", "Index", "Dealers",null,new { @class = "font"})</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="color: white;margin-top: 3px;">
+                                <span>Lender</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item">@Html.ActionLink("Create", "Create", "Lenders")</div>
+                                <div class="dropdown-item">@Html.ActionLink("View", "Index", "Lenders")</div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="color: white;margin-top:3px;">
+                                <span style="text-transform: uppercase;" class="fa fa-user-circle-o">&nbsp;&nbsp;@Session["adminname"].ToString()</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item">@Html.ActionLink("Logout", "Logout", "Users")</div>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </nav>
+    <div>
+        @RenderBody()
+        
+    </div>
+    <footer class="page-footer font-small lighten-3 bg-dark pt-3">
+        <div class="container text-center text-md-left">
+            <div class="row">
+                <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+                    <h5 class="font-weight-bold text-uppercase mb-4" style="color:white">Our Team</h5>
+                    <p style="font-size: 20px;text-transform: uppercase;color:white">Shah Darsh <br> Shah Divya</p>
+                </div>
+                <hr class="clearfix w-100 d-md-none">
+                <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+                    <h5 class="font-weight-bold text-uppercase mb-4" style="color:white">About</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <p style="color:white">
+                                <a>Home</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p style="color:white">
+                                <a>Products</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p style="color:white">
+                                <a>Login</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a style="color:white">Contact Us</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <hr class="clearfix w-100 d-md-none">
+                <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+                    <h5 class="font-weight-bold text-uppercase mb-4" style="color:white">Address</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <p style="color:white">
+                                <i class="fa fa-home mr-3"></i> College Road,Nadiad
+                            </p>
+                        </li>
+                        <li>
+                            <p style="color:white">
+                                <i class="fa fa-envelope mr-3"></i>dlms@gmail.com
+                            </p>
+                        </li >
+                        <li>
+                            <p style="color:white">
+                                <i class="fa fa-phone mr-3"></i> +91 97141 74778
+                            </p>
+                        </li>
+                        <li>
+                            <p style="color:white"> 
+                                <i class="fa fa-phone mr-3"></i> +91 73833 67447
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

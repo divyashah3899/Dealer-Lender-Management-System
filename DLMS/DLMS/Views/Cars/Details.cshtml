@@ -1,0 +1,89 @@
+﻿@model DLMS.Models.Car
+
+@{
+    ViewBag.Title = "Car Details";
+}
+<style>
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 19px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+
+<div class="row">
+    <div class="image" style="float: left;margin-left: 15%;margin-top: 5%;">
+        <img src="@Url.Content(Model.img)" class="img-thumbnail" width="432" height="367">
+    </div>
+    <div class="details" style="float: right;margin-left: 11%;margin-top: 4%; ">
+        <span style="text-transform: uppercase;font-size: 60Px;">Dealer Details</span>
+        <div *ngIf="isBid; else elseTemplate">
+            <ul class="list-group" style="margin-top: 31px;">
+                <li class="list-group-item"> Company Name : @Html.DisplayFor(model => model.Dealer.company_name) </li>
+                <li class="list-group-item"> Mobile No : @Html.DisplayFor(model => model.Dealer.contact_no) </li>
+                <li class="list-group-item"> Email : @Html.DisplayFor(model => model.Dealer.email) </li>
+                <li class="list-group-item"> Address : @Html.DisplayFor(model => model.Dealer.d_address)</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 50px;">
+    <div class="plocation" style="float: left;margin-left: 15%;margin-top: 3%;">
+        <span style="text-transform: uppercase;font-size: 54Px;">Car Details</span>
+        <ul class="list-group" style="margin-top: 31px;">
+            <li class="list-group-item">Manufacturer: @Html.DisplayFor(model => model.car_manufacturer)</li>
+            <li class="list-group-item">Model: @Html.DisplayFor(model => model.car_model)</li>
+            <li class="list-group-item">Type: @Html.DisplayFor(model => model.car_type)</li>
+            <li class="list-group-item">Price: ₹@Html.DisplayFor(model => model.price) </li>
+        </ul>
+    </div>
+    <div class="dlocation" style="float: right;margin-left: 11%;margin-top: 47px;">
+        <span style="text-transform: uppercase;font-size: 54Px;">More Information</span>
+        <ul class="list-group" style="margin-top: 36px;">
+            <li class="list-group-item">Fuel Tank: @Html.DisplayFor(model => model.fuel_tank)</li>
+            <li class="list-group-item">Airbag: @Html.DisplayFor(model => model.airbag)</li>
+            <li class="list-group-item">Gear: @Html.DisplayFor(model => model.gear)</li>
+            <li class="list-group-item">Mileage: @Html.DisplayFor(model => model.mileage)</li>
+        </ul>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 50px;">
+    <center style="margin-left:35%">
+        <button style="vertical-align:middle">@Html.ActionLink("Full Payment", "Create", "Fullpayments", new { id = Model.c_id },new { @class="button"})</button>
+        <button style="vertical-align:middle">@Html.ActionLink("Loan Request", "Create", "LoanRequests", new { id = Model.c_id },new { @class="button"})</button>
+    </center>
+</div>

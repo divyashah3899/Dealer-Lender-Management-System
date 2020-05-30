@@ -1,0 +1,76 @@
+﻿@model IEnumerable<DLMS.Models.LoanRequest>
+
+@{
+    ViewBag.Title = "Loan Requests";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            Car Manufacturer
+        </th>
+        <th>
+            Dealer Company Name
+        </th>
+        <th>
+            Lender Name
+        </th>
+        <th>
+            Downpayment
+        </th>
+        <th>
+            Loan Period
+        </th>
+        <th>
+            EMI
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Nominal Name
+        </th>
+        <th>
+            Nominal Address
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.car_manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dealer.company_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lender.bankname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.downpayment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.loan_period)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gnn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gnn_address)
+            </td>
+            <td>
+                @Html.ActionLink("Full Details", "Details", new { id = item.loan_id })
+            </td>
+        </tr>
+    }
+
+</table>

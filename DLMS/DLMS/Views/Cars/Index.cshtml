@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DLMS.Models.Car>
+
+@{
+    ViewBag.Title = "All Cars";
+}
+<style>
+    .bcolor{
+        color:white;
+    }
+</style>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            @using (Html.BeginForm("Index", "Cars", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+            <ul class="navbar-nav mr-auto">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <li class="form-group">
+
+                    <div class="col">
+                        <div> Car Manufacturer </div>     @Html.DropDownList("car_manufacturer", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </li>
+                <li class="form-group">
+                    
+                    <div class="col">
+                        <div>Car Type</div>    @Html.DropDownList("car_type", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </li>
+                <li class="form-group">
+                    
+                    <div class="col">
+                        <div>Airbag</div>    @Html.DropDownList("airbag", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </li>
+                <li class="form-group">
+                     <div class="col">
+                        <div>Gear</div>    @Html.DropDownList("gear", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </li>
+                <!--<div class="btn btn-primary"><input type="Submit" value="Apply" /></div>-->
+                <li class="btn btn-primary" style="width: 84px;height: 39px;margin-top: 20px;"><button>Apply</button></li>
+            </ul>
+                    }
+            </div>
+        </nav>
+
+        <div class="row col" style="position:relative">
+            @foreach (var item in Model)
+            {
+
+                <div class="card" style="width: 18rem;margin-left:50px;margin-top:12px">
+                    <img src="@Url.Content(item.img)" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> @Html.DisplayFor(modelItem => item.car_model)</h5>
+                        <p class="card-text">Car Manufacturer: @Html.DisplayFor(modelItem => item.car_manufacturer)</p>
+                        <p class="card-text"><b>Price:₹&nbsp; @Html.DisplayFor(modelItem => item.price)</b></p>
+                        <div class="btn btn-dark">@Html.ActionLink("Show Details", "Details", new { id = item.c_id })</div>
+                    </div>
+                </div>
+
+            }
+        </div>
+

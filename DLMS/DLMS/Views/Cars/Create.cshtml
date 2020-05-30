@@ -1,0 +1,92 @@
+﻿@model DLMS.Models.Car
+
+@{
+    ViewBag.Title = "Add Car";
+}
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+
+            @using (Html.BeginForm("Create", "Cars", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <span class="login100-form-title p-b-26">
+                   Enter Car Details
+                </span>
+                <span class="login100-form-title p-b-48">
+                    <i class="zmdi zmdi-font"></i>
+                </span>
+
+                <div class="wrap-input100 validate-input">
+                    @Html.DropDownList("car_manufacturer", null, htmlAttributes: new { @class = "input100" })
+                </div>
+                @Html.ValidationMessageFor(model => model.car_manufacturer, "", new { @class = "text-danger" })
+
+                <div class="wrap-input100 validate-input">
+
+                    @Html.TextBoxFor(model => model.car_model, new { placeholder = "Enter Car Model", htmlAttributes = new { @class = "input100" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.car_model, "", new { @class = "text-danger" })
+
+                <div class=" validate-input">
+                    Car Type &nbsp;&nbsp;&nbsp;
+                    @Html.RadioButtonFor(model => model.car_type, "New", new { htmlAttributes = new { @class = "" } }) New
+                    @Html.RadioButtonFor(model => model.car_type, "Used", new { htmlAttributes = new { @class = "" } }) Used
+                    @Html.ValidationMessageFor(model => model.car_type, "", new { @class = "text-danger" })
+
+                </div><br />
+
+                <div class="wrap-input100 validate-input">
+                    @Html.TextBoxFor(model => model.price, new { placeholder = "Enter Car Price", htmlAttributes = new { @class = "input100" } })
+                    @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+                </div>
+                <div class="wrap-input100 validate-input">
+                    @Html.TextBoxFor(model => model.power, new { placeholder = "Enter Car Power", htmlAttributes = new { @class = "input100" } })
+                    @Html.ValidationMessageFor(model => model.power, "", new { @class = "text-danger" })
+                </div>
+                <div class="wrap-input100 validate-input">
+                    @Html.TextBoxFor(model => model.fuel_tank, new { placeholder = "Enter Car Fueltank Capacity", htmlAttributes = new { @class = "input100" } })
+                    @Html.ValidationMessageFor(model => model.fuel_tank, "", new { @class = "text-danger" })
+                </div>
+                <div class="wrap-input100 validate-input">
+                    @Html.DropDownList("airbag", null, htmlAttributes: new { @class = "input100" })
+                    @Html.ValidationMessageFor(model => model.airbag, "", new { @class = "text-danger" })
+                </div>
+                <div class=" validate-input">
+                    Gear &nbsp;
+                    @Html.RadioButtonFor(model => model.gear, "Automatic", new { htmlAttributes = new { @class = "" } }) Automatic
+                    @Html.RadioButtonFor(model => model.gear, "Manual", new { htmlAttributes = new { @class = "" } }) Manual
+                    @Html.RadioButtonFor(model => model.gear, "Hybrid", new { htmlAttributes = new { @class = "" } }) Hybrid
+                    @Html.ValidationMessageFor(model => model.gear, "", new { @class = "text-danger" })
+                </div>
+                <br />
+                <div class="wrap-input100 validate-input">
+                    @Html.TextBoxFor(model => model.mileage, new { placeholder = "Enter Car Mileage", htmlAttributes = new { @class = "input100" } })
+                    @Html.ValidationMessageFor(model => model.mileage, "", new { @class = "text-danger" })
+                </div>
+                <div class="validate-input">
+                    @Html.TextBoxFor(model => model.ImageFile, new { type = "file", required = "required", htmlAttributes = new { @class = "" } })
+                    @Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger" })
+                </div><br />
+
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn">
+                            Submit
+                        </button>
+
+                    </div>
+                </div>
+            }
+
+        </div>
+            </div>
+</div>
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
